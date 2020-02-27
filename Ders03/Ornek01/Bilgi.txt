@@ -1,0 +1,65 @@
+- MPI_Barrier(MPI_Comm communicator)
+-> En son process bu fonksiyonun
+   çağrıldığı yere gelene kadar
+   diğer processler orada bekler.
+
+- MPI_Bcast(void* data, int count, MPI_Datatype datatype, int root, MPI_Comm communicator)
+-> Herkese yayın yapıyor. Kimden hangi adresteki ne kadar boyuttaki
+   data gonderilecek.
+
+- MPI_Scatter(
+        void* send_data,  //buyuk dizi
+        int send_count,   //chunk adedi
+        MPI_Datatype send_datatype,
+        void* recv_data,   //local dizi
+        int recv_count,    //dizi boyutu
+        MPI_Datatype recv_datatype,
+        int root,
+        MPI_Comm communicator)
+-> Datayi processlere saçıyor.
+
+- MPI_Gather(
+    void* send_data,
+    int send_count,
+    MPI_Datatype send_datatype,
+    void* recv_data,
+    int recv_count,
+    MPI_Datatype recv_datatype,
+    int root,
+    MPI_Comm communicator)
+-> Scatter ile saçılan datayı topluyor.
+
+- MPI_Reduce(
+    void* send_data,
+    void* recv_data,
+    int count,
+    MPI_Datatype datatype,
+    MPI_Op op,   //MPI_SUM gibi gelen datayla ne yapılacak..
+    int root,
+    MPI_Comm communicator)
+
+- int MPI_Alltoall
+        (
+        const void
+        *sendbuf,
+        int sendcount,
+        MPI_Datatype sendtype
+        ,
+        void
+        *recvbuf,
+        int recvcount,
+        MPI_Datatype recvtype
+        ,
+        MPI_Comm comm
+        )
+-> Matrix transpose için kullanılabilir...
+
+- int MPI_Scatterv(const void *sendbuf,
+        const int *sendcounts,
+        const int *displs,
+        MPI_Datatype sendtype,
+        void *recvbuf,
+        int recvcount,
+        MPI_Datatype recvtype,
+        int root,
+        MPI_Comm comm)
